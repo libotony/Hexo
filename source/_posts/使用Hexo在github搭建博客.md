@@ -42,8 +42,44 @@ $ hexo g      ##生成
 $ hexo s  ##启动本地服务
 ```
 根据提示，在浏览器输入[http://localhost:4000](http://localhost:4000),就可以看到效果啦。  
-`未完待续`
-
-
+###写文章
+执行new命令，即可生成指定文章到_post目录中  
+``` bash
+hexo new [layout] "title" #新建文章
+```  
+其中layout为可选参数，默认实用的是post，一般也都用这个，具体layout可以到scaffolds目录下查看，也可以自己新建自定义的layout，也可以在现在的基础上进行改动，比如我写文章时，默认是要加分类和标签的，而默认的layout是没有的，所以我改成了如下格式：  
+``` bash
+title: { { title } }
+date: { { date } }
+categories: 
+tags: 
+---  
+```
+###文章摘要
+文章摘要就是显示在文章列表中的部分。只需要在现实摘要的地方添加如下代码即可：  
+``` bash
+以上是摘要
+<!--more-->
+以下是余下全文
+```
+more以下的内容就是点击[阅读全文]才能看到的部分。  
+##部署到GitHub
+打开hexo/_config.yml,修改deploy部分  
+``` yml
+# Deployment
+## Docs: http://hexo.io/docs/deployment.html
+deploy:
+  type: github
+  repository: git@github.com:username/username.github.io.git
+  barnch: master
+```  
+然后执行如下代码：  
+``` bash
+hexo g	#生成
+hexo d	#部署
+```  
+上述代码中，hexo g用于在public目录中生成静态代码，hexo d是将public目录中的文件push到远程repository。到这里，你就可以将你的博客就部署到GitHub Pages了。  
+##定制你的博客
+###主题
 
 
